@@ -14,7 +14,7 @@ typedef struct Block {
 Block* freeList = NULL; // List of free blocks
 Block* usedList = NULL; // List of blocks in use
 
-void* GC_malloc(size_t size) {
+void* gc_malloc(size_t size) {
     Block* current = freeList;
     Block* prev = NULL;
 
@@ -67,11 +67,11 @@ void gc_collect() {
 int main() {
     printf("Testing garbage collector.\n");
 
-    int* num1 = (int*)GC_malloc(sizeof(int));
+    int* num1 = (int*)gc_malloc(sizeof(int));
     *num1 = 10;
     printf("num1: %d\n", *num1);
 
-    int* num2 = (int*)GC_malloc(sizeof(int));
+    int* num2 = (int*)gc_malloc(sizeof(int));
     *num2 = 20;
     printf("num2: %d\n", *num2);
 
